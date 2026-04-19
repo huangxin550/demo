@@ -52,7 +52,6 @@ public class Task {
     @Column(name = "tag")
     private List<String> tags = new ArrayList<>();
 
-    // 任务依赖关系 - 多对多自关联
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "task_dependencies",
