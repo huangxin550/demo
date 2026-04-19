@@ -57,27 +57,29 @@
 
 ```
 src/main/java/com/example/demo/
-├── config/                  # 配置类
-│   └── RedisConfig.java    # Redis 配置
-├── controllers/             # 控制器层
-│   └── TaskController.java # RESTful API 接口
-├── models/                  # 数据模型
-│   ├── Task.java           # 任务实体
-│   ├── TaskStatus.java     # 状态枚举
-│   ├── TaskPriority.java   # 优先级枚举
+├── config/                      # 配置类
+│   └── RedisConfig.java        # Redis 配置
+├── controllers/                 # 控制器层
+│   └── TaskController.java     # RESTful API 接口
+├── models/                      # 数据模型
+│   ├── Task.java               # 任务实体
+│   ├── TaskStatus.java         # 状态枚举
+│   ├── TaskPriority.java       # 优先级枚举
 │   ├── CreateTaskRequest.java  # 创建请求 DTO
 │   ├── UpdateTaskRequest.java  # 更新请求 DTO
-│   └── TaskResponse.java   # 响应 DTO
-├── services/                # 服务层
-│   ├── TaskService.java    # 业务逻辑
-│   └── TaskRepository.java # 数据访问
-├── utils/                   # 工具类
-│   ├── ApiResponse.java    # 统一响应封装
-│   ├── PageResult.java     # 分页结果封装
+│   └── TaskResponse.java       # 响应 DTO
+├── services/                    # 服务层
+│   ├── TaskService.java        # 服务接口定义
+│   ├── TaskRepository.java     # 数据访问接口
+│   └── Impl/                   # 服务实现层
+│       └── TaskServiceImpl.java # 任务服务实现类
+├── utils/                       # 工具类
+│   ├── ApiResponse.java        # 统一响应封装
+│   ├── PageResult.java         # 分页结果封装
 │   ├── TaskNotFoundException.java      # 自定义异常
 │   ├── TaskDependencyException.java    # 依赖异常
 │   └── GlobalExceptionHandler.java     # 全局异常处理
-└── DemoApplication.java     # 启动类
+└── DemoApplication.java         # 启动类
 ```
 
 ## 🚀 快速开始
@@ -374,7 +376,9 @@ curl -X DELETE http://localhost:8080/api/tasks/1
 ┌─────────────────────────────────────┐
 │         Controller Layer            │  ← RESTful API 接口
 ├─────────────────────────────────────┤
-│          Service Layer              │  ← 业务逻辑、缓存管理
+│          Service Interface          │  ← 服务接口定义（面向接口编程）
+├─────────────────────────────────────┤
+│       Service Implementation        │  ← 业务逻辑、缓存管理
 ├─────────────────────────────────────┤
 │       Repository Layer              │  ← 数据访问、查询优化
 ├─────────────────────────────────────┤
