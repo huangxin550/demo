@@ -2,8 +2,8 @@ CREATE TABLE IF NOT EXISTS tasks (
                                      id BIGINT AUTO_INCREMENT PRIMARY KEY,
                                      title VARCHAR(200) NOT NULL,
                                      description TEXT,
-                                     status VARCHAR(20) NOT NULL,    -- 保持 VARCHAR 不变，不影响你的代码
-                                     priority VARCHAR(20) NOT NULL,  -- 保持 VARCHAR 不变
+                                     status VARCHAR(20) NOT NULL,
+                                     priority VARCHAR(20) NOT NULL,
                                      created_at DATETIME NOT NULL,
                                      updated_at DATETIME NOT NULL,
                                      INDEX idx_status (status),
@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS tasks (
 
 CREATE TABLE IF NOT EXISTS task_tags (
                                          task_id BIGINT NOT NULL,
-                                         tag VARCHAR(255),               -- 保持你的原始长度
+                                         tag VARCHAR(255),
                                          UNIQUE KEY uk_task_tag (task_id, tag),
                                          INDEX idx_tag (tag),
                                          FOREIGN KEY (task_id) REFERENCES tasks(id) ON DELETE CASCADE
